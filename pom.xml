@@ -1,0 +1,162 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.future</groupId>
+	<artifactId>payment-gateway</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>payment gateway is for all kinds of payment service</name>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring-data-cassandra>1.5.1.RELEASE</spring-data-cassandra>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Camden.SR6</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+				<version>1.2.5.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-cassandra</artifactId>
+				<version>${spring-data-cassandra}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-cassandra</artifactId>
+				<version>${spring-data-cassandra}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-cql</artifactId>
+				<version>${spring-data-cassandra}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.datastax.cassandra</groupId>
+				<artifactId>cassandra-driver-core</artifactId>
+				<version>3.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-commons</artifactId>
+				<version>1.13.0.RELEASE</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- <pluginManagement> <plugins> <plugin> <groupId>com.spotify</groupId> 
+			<artifactId>docker-maven-plugin</artifactId> <version>0.4.13</version> <configuration> 
+			<skipDockerBuild>true</skipDockerBuild> </configuration> </plugin> </plugins> 
+			</pluginManagement> -->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>utf-8</encoding>
+					<resources>
+						<resource>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+						</resource>
+						<resource>
+							<directory>src/main/java</directory>
+							<includes>
+								<include>**/*.xml</include>
+							</includes>
+							<filtering>false</filtering>
+						</resource>
+					</resources>
+					<delimiters>
+						<delimiter>${*}</delimiter>
+					</delimiters>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-release</id>
+			<url>http://repo.spring.io/release/</url>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>http://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-release</id>
+			<url>http://repo.spring.io/release/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>http://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<modules>
+		<module>api-gateway-service</module>
+		<module>config-service</module>
+		<module>discovery-service</module>
+		<module>auth-service</module>
+		<module>payment-domain</module>
+		<module>payment-service</module>
+		<module>payment-ui</module>
+		<module>monitor-service</module>
+		<module>common-core</module>		
+	</modules>
+</project>
