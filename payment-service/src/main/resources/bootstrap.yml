@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: payment-service
+#  cloud:
+#    config:
+#      enabled: true
+#      discovery:
+#        enabled: true
+#        serviceId: payment-service

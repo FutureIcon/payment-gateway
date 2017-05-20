@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+hystrix:
+  command:
+    paymentServiceCommand:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 200000
+      circuitBreaker:
+        requestVolumeThreshold: 1000
+        sleepWindowInMilliseconds: 2000
+        
+security:
+  oauth2:
+    client:
+      clientId: payment-ui
+      clientSecret: payment-ui
+      accessTokenUri: http://localhost:8000/uaa/oauth/access_token
+      userAuthorizationUri: http://localhost:8000/uaa/oauth/authorize
+      clientAuthenticationScheme: header
+    resource:
+      userInfoUri: http://localhost:8000/uaa/user
+      preferTokenInfo: false
+        

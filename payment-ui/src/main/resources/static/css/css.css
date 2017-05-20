@@ -1,0 +1,169 @@
+span,em,i,a{ display: inline-block;}
+em,i{ font-style: normal;}
+button{ font-family: 'Microsoft YaHei', Arial, Helvetica, sans-serif;}
+.wrap{ width: 100%; padding-top: 60px;}
+
+.main{ width: 1200px; margin: 0 auto; color: #4A4A4A;}
+.main h1{ padding: 80px 0 50px; line-height: 28px; font-size: 18px; text-align: center;}
+.main h2{ padding: 80px 0 50px; line-height: 28px; font-size: 18px; text-align: center;}
+
+.main .moudle{ width: 100%; text-align: center; margin-bottom: 50px;}
+.main .moudle h2{ font-size: 16px; padding: 30px 0;}
+.main .moudle .icon{ width: 100%;}
+.main .moudle .icon img{ width: 180px;}
+.main .moudle .demo{ width: 100%;}
+.main .moudle .demo h3{ font-size: 14px; padding: 15px 0;}
+.main .moudle .demo h3 span{ color: #F5A623; cursor:pointer;}
+.main .moudle .demo h3 span i{ width: 8px; height: 16px; display: inline-block; background: url("img/icon-expand.png") no-repeat; background-size: 8px 16px; vertical-align: middle; margin-left: 8px; transition: transform 0.4s ease 0s;}
+.main .moudle .demo.on h3 span i{ transform: rotate(90deg);}
+.main .moudle .demo.on h3 p{ color: #979797; font-size: 14px;}
+
+.main .moudle .demo .pc{ width: 100%; height: 580px; margin-bottom: 20px; box-shadow: 0px 0px 8px rgba(0,0,0,0.2); overflow: hidden; position: relative; display: none;}
+.main .moudle .demo .pc .pc-k{ width: 400%; height: 580px; transition: transform 1s ease 0s; transform: translate3d(-1200px,0,0);}
+/*.main .moudle .demo .pc .pc-k .page{ width: 25%; height: 580px; background: url("img/img-pc.png") no-repeat; background-size: 100% 100%; float: left; position: relative;}*/
+.main .moudle .demo .pc .pc-k .page{ width: 25%; height: 580px; float: left; position: relative; background-size: 100% 100%;}
+.main .moudle .demo .pc .pc-k .page .pc-header{ padding: 0 20px; height: 64px; border-bottom: 1px solid #DCDCDC;}
+.main .moudle .demo .pc .pc-k .page .pc-header .left{ width: 40%; height: 30px; margin-top: 17px; float: left; text-align: left;}
+.main .moudle .demo .pc .pc-k .page .pc-header .left span{ display: inline-block; width: 180px; height: 20px; padding:5px 30px; border-right: 1px solid #FF8904; float: left;}
+.main .moudle .demo .pc .pc-k .page .pc-header .left span img{ width: 100%;}
+.main .moudle .demo .pc .pc-k .page .pc-header .left a{ display: inline-block; height: 30px; width: 100px; text-align: center; float: left; line-height: 30px; color: #FF8904; font-size: 14px;}
+/*.main .moudle .demo .pc .pc-k .page .pc-header .left img{ width: 180px; height: 20px;}*/
+.main .moudle .demo .pc .pc-k .page .pc-header .right{ float: right; width: 40%; text-align: right; margin-top: 15px;}
+.main .moudle .demo .pc .pc-k .page .pc-header .right input{ width: 230px; height: 32px; padding: 0 2px; border: 1px solid #FF8904; border-radius: 3px;}
+.main .moudle .demo .pc .pc-k .page .pc-header .right button{ width: 100px; height: 34px; border: 0; background-color: transparent; color: #FF8904; font-size: 14px; outline: none;}
+
+.main .moudle.moudle2 img{ width: 82px;}
+.main .moudle.moudle2 .demo h3 span{ color: #32D1C8;}
+.main .moudle.moudle2 .demo h3 span i{ background-image: url("img/icon-expand2.png");}
+.main .moudle.moudle2 .demo .pc{ width: 260px; height: 260px; margin: 0 auto 30px;}
+.main .moudle.moudle2 .demo .pc img{ width: 180px;}
+.main .moudle.moudle2 .demo .pc span{ line-height: 50px; font-size: 14px; margin-top: 10px;}
+.main .moudle.moudle.moudle3 img{ width: 98px;}
+.main .moudle.moudle3 .demo h3 span{ color: #A9D86E;}
+.main .moudle.moudle3 .demo h3 span i{ background-image: url("img/icon-expand3.png");}
+
+.pc-content{ padding: 40px; position: relative;}
+.pc-content .pro-img{ width: 245px; margin-right: 100px; float: left;}
+.pc-content .pro-img div img{ width: 100%;}
+.pc-content .pro-img span{ display: inline-block; width: 62px; height: 62px; cursor: pointer; margin: 5px;}
+.pc-content .pro-img span.on{ border: 1px solid #FF8904;}
+.pc-content .pro-img span img{ width: 100%;}
+.pc-content .pro-info{ width: 480px; float: left; color: #4A4A4A; text-align: left;}
+.pc-content .pro-info h4{ font-size: 18px;}
+.pc-content .pro-info h4 span{ font-size: 12px; margin-left: 20px;}
+.pc-content .pro-info .pro-price{ color: #FF6699; font-size: 12px; line-height: 24px; padding: 10px 0;}
+.pc-content .pro-info .pro-price span{font-size: 24px; margin-left: 10px;}
+.pc-content .pro-info .pro-price del{margin:0 20px; color: #979797;}
+.pc-content .pro-info .pro-price em{ width: 50px; height: 16px; display: inline-block; background-color: #FF8904; color: #fff; text-align: center; line-height: 16px; font-style: normal;}
+.pc-content .pro-info .pro-evaluate{ height: 52px; padding: 3px 0; line-height: 52px; border-top: 1px solid #DCDCDC; border-bottom: 1px solid #DCDCDC; font-size: 14px;}
+.pc-content .pro-info .pro-evaluate span{ padding: 0 20px; border-right: 1px dashed #DCDCDC;}
+.pc-content .pro-info .pro-evaluate span:last-child{ border-right: 0;}
+.pc-content .pro-info .pro-evaluate span em{ padding: 0 10px; color: #FF6699;}
+.pc-content .pro-info .pro-type{ font-size: 14px; padding: 20px 0;}
+.pc-content .pro-info .pro-type div{ padding: 10px 0;}
+.pc-content .pro-info .pro-type b{ margin-right: 20px;}
+.pc-content .pro-info .pro-type span{ width: 58px; height: 28px; border: 1px solid #DCDCDC; text-align: center; line-height: 28px; margin: 0 10px;}
+.pc-content .pro-info .pro-type span.on{ border-color: #FF6699;}
+.pc-content .pro-info .pro-type input{ width: 58px; height: 26px; border: 1px solid #DCDCDC; text-align: center;}
+.pc-content .pro-info .pro-type button{ width: 22px; height: 28px; border: 1px solid #DCDCDC; text-align: center; margin: 0 10px; background-color: transparent;}
+.pc-content .pro-info button.go-order{ width: 160px; height: 52px; background-color: #FF6699; border: 0; font-size: 16px; color: #fff;}
+.pc-content .pro-summary{ width: 180px; height: 400px; float: right; border-left: 1px solid #DCDCDC; padding-left: 30px;}
+.pc-content .pro-summary h4{ font-size: 18px; text-align: left;}
+.pc-content .pro-summary div{ margin: 20px 0;}
+.pc-content .pro-summary div span{ font-size: 12px; line-height: 18px; padding: 2px 10px; border-right: 1px dashed #DCDCDC;}
+.pc-content .pro-summary div span:last-child{ border-right: 0;}
+.pc-content .pro-summary div span em{ color: #FF8904;}
+.pc-content .pro-summary p{ font-size: 12px; color: #979797; text-align: left; padding: 6px 0;}
+.pc-content .pro-summary p em{ width: 50px; height: 18px; background-color: #FF8904; text-align: center;line-height: 18px; color: #fff; font-size: 12px; margin-top: 20px;}
+
+.pc-content .progress{ width: 720px; height: 70px; margin: 0 auto;}
+.pc-content .progress span{ width: 240px; height: 2px; margin: 10px 0; background-color: #DCDCDC; position: relative; float: left; font-size: 12px; color: #4A4A4A; line-height: 25px;}
+.pc-content .progress span em{ width: 22px; height: 22px; background-color: #DCDCDC; border-radius: 50%; color: #fff; font-size: 14px; line-height: 22px; text-align: center; position: absolute; left: 110px; top: -10px;}
+/*.pc-content .progress span:first-child,.pc-content .progress span:last-child{ width: 120px;}*/
+/*.pc-content .progress span:first-child em{ left: 0px;}*/
+/*.pc-content .progress span:last-child em{ left: auto; right: 0px;}*/
+.pc-content .progress span.on{ background-color: #FF8904;}
+.pc-content .progress span.on em{ background-color: #FF8904;}
+.pc-content .moudle{ text-align: left; width: 100%; height: 160px; margin-bottom: 0px;}
+.pc-content .moudle h4{ font-size: 14px;}
+.pc-content .moudle dl{ width: 178px; height: 78px; padding: 10px; border: 1px solid #DCDCDC; color: #979797; margin: 15px 0; float: left; margin-right: 20px;}
+.pc-content .moudle dl dt{ font-size: 14px; margin-bottom: 5px;}
+.pc-content .moudle dl dd{ font-size: 12px;}
+.pc-content .moudle dl dd a{ padding: 5px 0; color: #FF6699;}
+.pc-content .moudle dl.on{ border-color:#FF6699 }
+.pc-content .moudle dl.add{ text-align: center;}
+.pc-content .moudle dl.add dt em{ width: 30px; height: 30px; background-color: #DCDCDC; text-align: center; line-height: 30px; border-radius: 50%;color: #fff; font-size: 24px; margin: 7px 0;}
+.pc-content .moudle ul{ width: 100%;}
+.pc-content .moudle ul li{ text-align: right; font-size: 12px; color: #979797;}
+.pc-content .moudle ul li span{ width: 220px; text-align: center; padding-bottom: 10px;}
+.pc-content .moudle ul li.order-info{ height: 100px; padding: 10px 0 10px 10px; border: 1px solid #DCDCDC;}
+.pc-content .moudle ul li.order-info .pro{ float: left; text-align: left; line-height: 22px;}
+.pc-content .moudle ul li.order-info .pro img{max-width: 62px; border: 1px solid #FF6699; float: left; margin-right: 20px;}
+.pc-content .moudle ul li.order-info .pro .message{ color: #4A4A4A; font-size: 14px; margin-top: 5px;}
+.pc-content .moudle ul li.order-info .pro .message input{ margin-left: 5px;}
+.pc-content .sub-order{ text-align: right; margin-top: 20px; height: 40px; line-height: 40px; font-size: 14px;}
+.pc-content .sub-order button{ width: 120px; height: 40px; background-color: #FF6699; font-size: 16px; color: #fff; border: 0; margin-left: 50px;}
+
+.pc-content .moudle h2{ padding: 0; margin: 10px 0 30px; font-size: 16px; color: #4A4A4A;}
+.pc-content .moudle h2 span{ padding-right: 10px; border-right: 1px solid #FF8904; color: #FF8904; margin-right: 10px;}
+.pc-content .moudle .pay-list{ height: 90px; margin-top: 30px; border-bottom: 1px solid #DCDCDC;}
+.pc-content .moudle .pay-list span{ width: 118px; height: 38px; border: 1px solid #DCDCDC; float: left; margin-right: 40px;}
+.pc-content .moudle .pay-list span img{ width: 100%; height: 100%;}
+.pc-content .moudle .pay-list span.on{ border-color: #FF8904;}
+.pc-content .go-pay{ text-align: left; padding-top: 20px;}
+.pc-content .go-pay button{ width: 120px; height: 40px; background-color: #FF6699; font-size: 16px; color: #fff; border: 0;}
+.pc-content .go-pay i{ width: 21px; height: 22px; background: url("img/icon-warning.png") no-repeat; background-size: 100% 100%; vertical-align: middle; margin: 0 10px 0 40px;}
+.pc-content .agreement{ text-align: left; margin-top: 40px; line-height: 16px; font-size: 14px;}
+.pc-content .agreement i{ width: 16px; height: 16px; background: url("img/icon-checked.png") no-repeat; background-size: 100% 100%; vertical-align: middle; margin-right: 10px;}
+.pc-content .agreement span{ color: #FF6699;}
+
+.popup-window{ width: 100%; height: 100%; background: rgba(0,0,0,0.2); position: absolute; top: 0; left: 0;}
+.popup-window .pw-main{ width: 400px; height: 200px;  padding-top: 190px; margin: 0 auto;}
+.popup-window .pw-main .con{ width: 100%; height: 100%; background-color: #fff;}
+.popup-window .pw-main .con h4{ width: 100%; height: 36px; line-height: 36px; font-size: 12px; background-color: #F5F5F5;}
+.popup-window .pw-main .con p{ font-size: 12px; padding: 30px 0;}
+.popup-window .pw-main .con p span{ color: #FF6699;}
+.popup-window .pw-main .con p button{ margin: 25px; width: 100px; height: 30px; border: 1px solid #FF6699; background-color: #fff; color: #FF6699; font-size: 12px;}
+.popup-window .pw-main .con p button.paied{border: 0; background-color: #FF6699; color: #fff;}
+.popup-window .pw-main .con p span.question{ color: #979797;}
+
+.result-warp{ width: 1000px; margin:20px auto 30px; background-color: #FAFAFA; padding: 20px 50px; text-align: left;font-size: 12px}
+.result-warp .left{ width: 70%; float: left;}
+.result-warp .left dl{ width: 100%;}
+.result-warp .left dl dt{ color: #21d376; font-size: 18px; padding-bottom: 30px;}
+.result-warp .left dl dd{ color: #979797; line-height: 32px;}
+.result-warp .left dl dd span{ margin-left: 50px;}
+.result-warp .right{ width: 30%; float: right; text-align: center; color: #979797; padding-top: 30px;}
+.result-warp .right img{ width: 140px; padding-bottom: 20px;}
+.go-back{ text-align: center; margin-bottom: 300px;}
+.go-back a{ width: 120px; height: 40px; line-height: 40px; background-color: #1FB5AD; color: #fff; display: inline-block;}
+
+.wechat{ width: 100%; height: 340px; padding: 15px 0; background-color: #fff; position: absolute; bottom: 0; left: 0; display: none; z-index: 99;}
+.wechat button{ width: 120px; height: 40px; background-color: #FF6699; font-size: 14px; color: #fff; border: 0; margin-top: 20px;}
+.wechat .qrcode{ width: 100%; height: 240px; background-color: #f2f2f2; padding: 20px 0; line-height: 36px;}
+#qrcode{}
+#qrcode canvas{ width: 160px; height: 160px;}
+
+
+
+/*.main .moudle .demo .pc .pc-k .page button{ background-color: transparent; border: 0; color: #fff; width: 160px; height: 52px; position: absolute;}*/
+.main .moudle .demo .pc .pc-k .page button.go-order{ left: 431px; top: 445px;}
+
+/*.main .moudle .demo .pc .pc-k .page.page2{ background-image: url("img/img-pc2.png");}*/
+.main .moudle .demo .pc .pc-k .page button.go-back{ left: 270px; top: 9px; width: 60px;}
+.main .moudle .demo .pc .pc-k .page button.go-sub{ left: 985px; top: 511px; width: 120px; height: 40px;}
+
+/*.main .moudle .demo .pc .pc-k .page.page3{ background-image: url("img/img-pc3.png");}*/
+
+/*.main .moudle .demo .pc .pc-k .page.page4{ background-image: url("img/img-pc4.png");}*/
+
+/*.main .moudle .demo.on .pc .pc-k{ transform: translate3d(-100px,0,0);}*/
+
+
+
+@media (max-width: 1000px) {
+    .wrap .banner{ height: 200px; background-size: cover;}
+    .wrap .banner img{ width: 90%; margin-top: 70px;}
+
+    .main{ width: 90%;}
+}

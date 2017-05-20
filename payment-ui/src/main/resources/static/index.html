@@ -1,0 +1,234 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="text/html">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<script type="text/javascript" src="lib/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="lib/js/angular-1.4.0.min.js"></script>
+<script type="text/javascript" src="js/nav.js"></script>
+<script type="text/javascript" src="js/qrcode.js"></script>
+<script type="text/javascript" src="js/control.js"></script>
+<script>
+    /*var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d4b3e64c9f3cc3b30ab8405384499f62";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();*/
+</script>    <title>Item Checkout</title>    
+    <link rel="stylesheet" href="css/css.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <style>
+        /** pay result CSS **/
+
+    </style>
+</head>
+<body ng-app="payDemo" ng-controller="payDemoCtrl">
+
+<div class="wrap">
+    <div class="main">
+        <h1>Future Payment GateWway demo体验</h1>		
+        <div class="moudle">
+            <h2>PC网页支付场景</h2>
+            <div class="icon"><img src="img/icon-pc.png"></div>
+            <div class="demo" ng-class="showWebPay?'on':''">
+                <h3><span ng-click="showWebPay=!showWebPay">点击体验demo<i></i></span></h3>
+                <div class="pc" ng-style="showWebPay?{'display':'block'}:{'display':'none'}">
+                    <div class="pc-k" ng-style="wPayViewPosition">
+                        <div class="page qrcode">
+                            <div class="pc-header">
+                                <div class="left"><span><img src="img/pc-logo.png"></span></div>
+                                <div class="right"><input type="text"><button>搜索商品</button></div>
+                            </div>
+                            <div class="pc-content">
+                                <div class="pro-img">
+                                    <div><img ng-src="{{getShirt()}}"></div>
+                                    <span ng-class="selShirt=='white'?'on':''" ng-click="selShirt='white'"><img src="img/img-shirt-white-small.png"></span>
+                                    <span ng-class="selShirt=='gray'?'on':''" ng-click="selShirt='gray'"><img src="img/img-shirt-gray-small.png"></span>
+                                    <span ng-class="selShirt=='blue'?'on':''" ng-click="selShirt='blue'"><img src="img/img-shirt-blue-small.png"></span>
+                                </div>
+                                <div class="pro-info">
+                                    <h4>纯棉T恤<span>(体验真实的支付场景，会支付出1分钱，并无真实的商品)</span></h4>
+                                    <div class="pro-price">
+                                        纯色简约款，100%纯棉<br>¥<span>{{price}}</span><del>¥79</del><em>免运费</em>
+                                    </div>
+                                    <div class="pro-evaluate">
+                                        <span>销量 <em>50件</em></span><span>好评率 <em>100%（48人）</em></span><span>喜欢 <em>668人</em></span>
+                                    </div>
+                                    <div class="pro-type">
+                                        <div class="pro-color"><b>颜色</b><span ng-class="selColor=='white'?'on':''" ng-click="selShirt=selColor='white'">白色</span><span ng-class="selColor=='gray'?'on':''" ng-click="selShirt=selColor='gray'">灰色</span><span ng-class="selColor=='blue'?'on':''" ng-click="selShirt=selColor='blue'">蓝色</span></div>
+                                        <div class="pro-size"><b>尺寸</b><span ng-class="sizeSelected==0?'on':''" ng-click="sizeSelected=0">S</span><span ng-class="sizeSelected==1?'on':''" ng-click="sizeSelected=1">M</span><span ng-class="sizeSelected==2?'on':''" ng-click="sizeSelected=2">L</span><span ng-class="sizeSelected==3?'on':''" ng-click="sizeSelected=3">XL</span></div>
+                                        <div class="pro-size"><b>数量</b><button ng-click="number=number>1?(number-1):number">-</button><input type="text" readonly ng-model="number"><button ng-click="number=((number+1)<=188?(number+1):number)">+</button>（库存188件）</div>
+                                    </div>
+                                    <div><button class="go-order" ng-click="doChangeWebPayView(-1200)">立即购买</button></div>
+                                </div>
+                                <div class="pro-summary">
+                                    <h4>Future PaymentGW</h4>
+                                    <div>
+                                        <span>描述<br><em>4.9--</em></span>
+                                        <span>质量<br><em>4.9--</em></span>
+                                        <span>服务<br><em>4.9--</em></span>
+                                    </div>
+                                    <p>所在地区：上海</p>
+                                    <p>商品数量：188件</p>
+                                    <p>销售数量：50件<br><em>免运费</em></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page page2">
+                            <div class="pc-header">
+                                <div class="left"><span><img src="img/pc-logo.png"></span><a href="javascript:void(0);"  class="go-back" ng-click="doChangeWebPayView(0)">返回</a></div>
+                                <div class="right"><input type="text"><button>搜索商品</button></div>
+                            </div>
+                            <div class="pc-content">
+                                <div class="progress">
+                                    <span class="on"><em>1</em><br>选定商品</span>
+                                    <span><em>2</em><br>核对信息</span>
+                                    <span><em>3</em><br>付款完成购买</span>
+                                </div>
+                                <div class="moudle">
+                                    <h4>选择收货地址</h4>
+                                    <dl class="on">
+                                        <dt>上海市</dt>
+                                        <dd>未来科技<br><a href="javascript:void (0);">修改</a> </dd>
+                                    </dl>
+                                    <dl class="add">
+                                        <dt><em>+</em></dt>
+                                        <dd>添加新的收货地址</dd>
+                                    </dl>
+                                </div>
+                                <div class="moudle">
+                                    <h4>确认订单信息</h4>
+                                    <ul>
+                                        <li><span>单价</span><span>数量</span><span>总计</span></li>
+                                        <li class="order-info">
+                                            <div class="pro">
+                                                <img ng-src="{{'img/img-shirt-'+selShirt+'-small.png'}}"> <b>纯棉T恤</b><br><em>颜色：{{getColor()}}</em><br><em>尺寸：{{getSize()}}</em>
+                                                <div class="message">给商家留言<input type="text"></div>
+                                            </div>
+                                            <span>¥{{price}}</span><span>{{number}}</span><span>¥{{(number/(1/price))}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="sub-order">
+                                    应付款：¥{{(number/(1/price))}}<button class="go-sub" ng-click="doChangeWebPayView(-2400)">提交订单</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page page3">
+                            <div class="pc-header">
+                                <div class="left"><span><img src="img/pc-logo.png"></span><a href="javascript:void(0);" ng-click="doChangeWebPayView(-1200)">返回</a></div>
+                                <div class="right"><input type="text"><button>搜索商品</button></div>
+                            </div>
+
+                            <div class="pc-content">
+                                <div class="progress">
+                                    <span class="on"><em>1</em><br>选定商品</span>
+                                    <span class="on"><em>2</em><br>核对信息</span>
+                                    <span><em>3</em><br>付款完成购买</span>
+                                </div>
+                                <div class="moudle" style="margin-bottom: 50px;">
+                                    <h2><span>FuturePaymentGW</span> 收银台</h2>
+                                    <h4>选择支付方式</h4>
+                                    <div class="pay-list">                                        
+                                        <span ng-class="channel=='WX_NATIVE'?'on':''" ng-click="channel='WX_NATIVE'"><img src="img/icon-wechat.png"></span>
+<!--                                        <span ng-class="channel=='UN_WEB'?'on':''" ng-click="channel='UN_WEB'"><img src="img/icon-un.png"></span>-->
+                                        <span ng-class="channel=='ALI_WEB'?'on':''" ng-click="channel='ALI_WEB'"><img src="img/icon-ali.png"> </span>
+										<span ng-class="channel=='JD_WEB'?'on':''" ng-click="channel='JD_WEB'"><img src="img/icon-jd.png"></span>
+                                    </div>
+                                </div>
+                                <div class="go-pay"><button ng-click="goPay()">确认支付</button><i></i>请在1小时内完成支付，超出1小时再支付可能导致购买失败，需重新下单购买。</div>
+                                <div class="agreement"><i></i>我已经阅读并同意 <span>《Future Payment Gateway 商城购买协议》</span></div>
+
+                                <div class="wechat">
+
+
+
+
+                                    <div class="qrcode">支付金额：¥{{(number/(1/price))}}
+
+                                        <div id="qrcode">
+											<!-- <img src="img/img-qrcode.png"> -->
+                                        </div>
+                                        微信扫描二维码，完成支付
+                                    </div>
+                                    <button ng-click="payCancel()">更换支付方式</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="page page4">
+                            <div class="pc-header">
+                                <div class="left"><span><img src="img/pc-logo.png"></span></div>
+                                <div class="right"><input type="text"><button>搜索商品</button></div>
+                            </div>
+                            <div class="pc-content">
+                                <div class="progress">
+                                    <span class="on"><em>1</em><br>选定商品</span>
+                                    <span class="on"><em>2</em><br>核对信息</span>
+                                    <span class="on"><em>3</em><br>付款完成购买</span>
+                                </div>
+                                <div class="result-warp">
+                                    <div class="left">
+                                        <dl>
+                                            <dt ng-style="billStatusStyle">{{billStatus}}</dt>
+                                            <dd>产品名称：{{title}}<br><br>实付金额：¥{{(number/(1/price)).toFixed(1)}}<br>收款方：未来软件<br>付款时间：{{billDate}}<span>订单编号：{{bill_no}}</span></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="right">
+                                        扫描二维码，关注未来软件官方微信公众号
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div class="go-back"><a href="" ng-click="doChangeWebPayView(0)">返回首页</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popup-window" ng-show="showPopup">
+                        <div class="pw-main">
+                            <div class="con">
+                                <h4>支付确认</h4>
+                                <p>请在新打开的的页面完成支付，<span>支付完成前，请不要关闭此窗口。</span><br>
+                                    <button class="paied" ng-click="paySuccess()">已完成支付</button><button class="change" ng-click="payFail()">更换支付方式</button><br>
+                                    <span class="question">支付遇到问题？请联系FuturePayment客服获得帮助</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>提供全套支付解决方案： 支持支付宝网页支付、支付宝扫码支付、 微信扫码支付、银联网页支付等，适用于电商等PC网页支付场景需求</p>
+            </div>
+        </div>
+        <!--<div class="moudle moudle2">
+            <h2>手机移动网页支付场景</h2>
+            <div class="icon"><img src="img/icon-phone.png"></div>
+            <div class="demo" ng-class="showWapPay?'on':''">
+                <h3><span ng-click="showWapPay=!showWapPay">点击体验demo<i></i></span></h3>
+                <div class="pc" ng-style="showWapPay?{'display':'block'}:{'display':'none'}">
+                    <span>微信扫码，体验移动网页支付</span><br>
+                    <img src="img/img-wechat.png">
+                </div>
+                <p>手机移动网页同步PC端所有支付渠道，适用于WAP移动页面支付，微信H5页面支付等应用场景。</p>
+            </div>
+        </div>
+        <div class="moudle moudle2 moudle3">
+            <h2>Android APP支付场景</h2>
+            <div class="icon"><img src="img/icon-android.png"></div>
+            <div class="demo" ng-class="showAndroid?'on':''">
+                <h3><span ng-click="showAndroid=!showAndroid">点击体验demo<i></i></span></h3>
+                <div class="pc" ng-style="showAndroid?{'display':'block'}:{'display':'none'}">
+                    <span>下载Android APK体验demo</span><br>
+                    <img src="img/img-android.png">
+                </div>
+                <p>Future Cloud Android SDK目前已经包含所有主流支付渠道，并支持支付订单和退款订单的查询功能，可以作为调用Future Cloud Rest API的示例或者直接用于生产。</p>
+            </div>
+        </div>-->
+	</div>	
+</div>
+</body>
+</html>
+
+	

@@ -1,0 +1,33 @@
+server:
+  port: 7080
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    payment-service:
+      path: /payment-service/**
+      stripPrefix: true
+      url: http://localhost:8082/
+#      serviceId: payment-service
+#      location: payment-service
+    auth-service:
+      path: /auth-service/**
+      stripPrefix: true
+      url: http://localhost:8000/uaa
+
+security:
+  oauth2:
+    client:
+      clientId: payment-api-gateway
+      clientSecret: payment-api-gateway
+      accessTokenUri: http://localhost:8000/uaa/oauth/token
+      userAuthorizationUri: http://localhost:8000/uaa/oauth/authorize
+      clientAuthenticationScheme: header
+    resource:
+      tokenInfoUri: http://localhost:8000/uaa/oauth/check_token
+      prefer-token-info: true
+      
+proxy:
+  auth:
+    routes:
+      payment-service: oauth2, passthru

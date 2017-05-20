@@ -1,0 +1,62 @@
+spring.profiles.active: ${spring.profiles.active}
+server:
+  port: 8082
+---
+spring.profiles: dev
+#eureka:
+#  instance:
+#    nonSecurePort: ${server.port:8082}
+#  client:
+#    serviceUrl:
+#      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
+security:
+  oauth2:
+   client:
+      clientId: payment-service
+      clientSecret: payment-service
+   resource:
+    tokenInfoUri: http://localhost:8000/uaa/oauth/check_token
+#spring:
+#  data:
+#    cassandra:
+#      repositories: com.future.payment.persistence.repository
+#      keyspace-name: sb_payment
+#      contact-points: localhost
+#      consistency-level: one
+#  kafka:
+#    client-id: payment-service
+#    producer:
+#      bootstrap-servers: 192.168.70.33:9092,192.168.70.15:9092,192.168.70.20:9092
+#      retries: 2
+#      acks: 1
+#      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        
+---
+spring.profiles: test
+eureka:
+  instance:
+    nonSecurePort: ${server.port:8082}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
+spring:
+  data:
+    cassandra:
+      repositories: com.future.payment.persistence.repository
+      keyspace-name: sb_payment
+      contact-points: localhost
+---
+spring.profiles: prod
+eureka:
+  instance:
+    nonSecurePort: ${server.port:8082}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
+spring:
+  data:
+    cassandra:
+      repositories: com.future.payment.persistence.repository
+      keyspace-name: sb_payment
+      contact-points: localhost   

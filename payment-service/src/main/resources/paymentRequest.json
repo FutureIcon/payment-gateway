@@ -1,0 +1,28 @@
+{  
+   "deviceInfo":{  
+      "storeNo":"STORE002",
+      "deviceNo":"DEVICE002"
+   },
+   "paymentMethod": {
+      "type":"weixin",
+      "externalKey":"Abcde",
+      "accountId":"18621759990"
+   },
+   "saleOrder":{  
+      "orderId":"201702201100",
+      "items":[  
+         {  
+            "itemId":"ITEM002",
+            "itemTitle":"iphone 6s",
+            "quantity":1,
+            "price":299.99
+         },
+         {  
+            "itemId":"ITEM003",
+            "itemTitle":"iphone 7",
+            "quantity":1,
+            "price":399.99
+         }
+      ]
+   }
+}

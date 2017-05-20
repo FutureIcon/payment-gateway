@@ -1,0 +1,38 @@
+#spring.profiles.active: ${spring.profiles.active}
+#---
+server:
+  port: 8000
+  context-path: /uaa
+security:
+    user:
+      name: future1
+      password: future1
+
+ignored: /css/**,/js/**,/favicon.ico,/webjars/**
+#spring.profiles: dev
+#eureka:
+#  instance:
+#    nonSecurePort: ${server.port:8082}
+#  client:
+#    serviceUrl:
+#      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
+#---
+#server:
+#  port: 8000
+#spring.profiles: peer-one
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#   serviceUrl:
+#      defaultZone: http://${eureka.host:localhost}:${eureka.port:8771}/eureka/
+#---
+#server:
+#  port: 8000
+#spring.profiles: peer-two
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#   serviceUrl:
+#      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/

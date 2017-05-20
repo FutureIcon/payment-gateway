@@ -1,0 +1,119 @@
+html,body{ width:100%; height:100%; font-family:"STHeitiSC-Light",Arial,Verdana,sans-serif;}
+html,body,h1,h2,h3,h4,h5,p,ul,li,dl,dt,dd{padding:0; margin:0;}
+h1,h2,h3,h4,h5{ font-weight:normal;}
+li{ list-style:none;}
+a{ text-decoration:none;}
+i{ display:inline-block;}
+input,select{ font-family:"Microsoft Yahei";}
+::-webkit-input-placeholder { /* WebKit browsers */
+    font-family: "Microsoft Yahei";
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-family: "Microsoft Yahei";
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-family: "Microsoft Yahei";
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-family: "Microsoft Yahei";
+}
+button{ cursor: pointer;}
+/*
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+mark, .mark {
+    padding: .2em;
+    background-color: #ffff00;
+}*/
+
+.header{ width:100%; height:60px; background:rgba(0,0,0,0.3); position:fixed; left:0; top:0; z-index:999;}
+.header .nav{ width:1000px; height:60px; margin:0 auto; text-align:center; position:relative; font-size:16px;}
+.header .nav a{ display:inline-block; color:#fff;}
+.header .nav a.logo{width:105px; height:60px; background:url(/image/new_index/logo.png) center no-repeat; position:absolute; left:0; top:0;}
+.header .nav ul{ display:inline-block; padding:10px 0;}
+.header .nav ul li{ float:left; line-height:40px; color:#fff; position:relative;}
+.header .nav ul li a{ padding:0 15px;}
+.header .nav ul li a i{ width:16px; height:9px; background:url(/image/new_index/icon_more.png) no-repeat; margin-left:5px; vertical-align:middle;}
+.header .nav ul li a:hover{ color:#FF6C2C;}
+.header .nav ul li a:hover i{ background-image:url(/image/new_index/icon_more_orange.png);}
+.header .nav ul li a.on{ color:#FF6C2C;}
+.header .nav ul li a.on i{ background-image:url(/image/new_index/icon_more_orange.png);}
+.header .nav ul li div{ position:absolute; top:31px; left:0; min-width:130px; display:none;}
+.header .nav ul li ul{ background:rgba(0,0,0,0.3); margin-top:20px;}
+.header .nav ul li ul li{ font-size:14px;}
+.header .nav ul li:hover div{ display:block;}
+.header .nav .loginbar{ position:absolute; right:0; top:0;}
+.header .nav .loginbar a{ /*width:58px;*/ height:28px; padding: 0 12px; border-radius:15px; text-align:center; line-height:28px; margin-top:15px;}
+.header .nav .loginbar a.login{ border:1px solid #fff;}
+.header .nav button{ width:40px; height:40px; border:0; background-color:transparent; position:absolute; top:10px; right:10px; background:url(/image/new_index/index_list.png) center no-repeat; background-size:20px 20px; display:none;}
+
+
+.section{ width:100%;}
+
+
+.footer{ width:100%; height:350px; background:url(/image/new_index/footer_bg2.jpg) center no-repeat;}
+.footer .con{ width:1000px; margin:0 auto; padding-top:70px; color:#fff;}
+.footer .con dl{ width:20%; float:left;}
+.footer .con dl dt{ font-size:16px; line-height:50px;}
+.footer .con dl dd{ font-size:14px; line-height:24px; color:#ccc;}
+.footer .con dl dd a{ color:#ccc;}
+.footer .con dl dd a:hover{ color:#fff;}
+.footer .con .qrcode{ width:20%; padding:10px 0; float:left; text-align:center; font-size: 14px;}
+.footer .con .qrcode img{ max-width:90%; height: 100px;}
+.footer .con p{ text-align:center; margin-top:50px; font-size:14px; color:#999;}
+
+
+.clear_float{ clear:both;}
+
+@media(min-width:767px){
+    /*html,body{ overflow:hidden;}*/
+    .m-header{background:rgba(255,255,255,1); box-shadow:1px 1px 3px #eee;}
+    .m-header .nav a{ display:inline-block; color:#4a4a4a;}
+    .m-header .nav a.logo{ background-image:url(/image/new_index/logo_black2.png); background-size: 105px 24px;}
+    .m-header .nav .loginbar a.login{ border-color:#4a4a4a;}
+    .m-header .nav ul li a i{ background-image:url(/image/new_index/icon_more_gray.png);}
+
+    .m-header .nav ul li ul{ background:rgba(255,255,255,1); margin-top:20px; box-shadow:0px 0px 6px #eee;}
+    .m-header .nav ul li ul li{ font-size:14px;}
+    .m-header .nav ul li:hover div{ display:block;}
+}
+
+@media( max-width:767px ){
+    .header{background:rgba(0,0,0,0.8);}
+    .header .nav{ width:100%;}
+    .header .nav a.logo{ left:15px; background-image:url(/image/new_index/logo2.png); background-size:105px 24px;}
+    .header .nav .loginbar{ width:100%; top:60px; height:60px; background:rgba(0,0,0,0.7); display:none;}
+    .header .nav ul{ display:block; width:100%; position:absolute; left:0px; top:120px; background:rgba(0,0,0,0.7); display:none; padding:0;}
+    .header .nav ul li{ width:100%; padding:0; line-height:36px;}
+    .header .nav ul li div{ width:100%; top:44px; position: static;}
+    .header .nav ul li div ul{background:rgba(0,0,0,0.7); margin-top:0; top:0; position: static;}
+    .header .nav ul li:hover div{ display:none;}
+    .header .nav button{ display:inline-block;}
+
+    /*.section .content{ width:80%; padding:0 10%; margin:100px auto 60px;}*/
+
+    .footer{ position:static; height:auto; background-size:cover;}
+    .footer .con{ width:auto; padding:30px 15px;}
+    .footer .con dl{ width:25%; text-align:center;}
+    .footer .con dl dt{ font-size:14px;}
+    .footer .con dl dd{ font-size:12px;}
+    .footer .con .qrcode{ width:100%; margin-top:30px;}
+    .footer .con p{ font-size:12px;}
+
+    .header .nav .show{
+        display:block;
+        transition:all 0.2s linear 0s;
+        -webkit-transition:all 0.2s linear 0s;
+        -moz-transition:all 0.2s linear 0s;
+        -o-transition:all 0.2s linear 0s;
+    }
+}
+.icon-ali{
+    background-image: url("/dashboard/img/icon-zhifubao16x16@2x.png");
+    color: red;
+}
