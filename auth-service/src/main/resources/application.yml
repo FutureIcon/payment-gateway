@@ -7,8 +7,7 @@ security:
     user:
       name: future1
       password: future1
-
-ignored: /css/**,/js/**,/favicon.ico,/webjars/**
+    ignored: /css/**,/js/**,/favicon.ico,/webjars/**
 #spring.profiles: dev
 #eureka:
 #  instance:

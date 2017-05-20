@@ -26,8 +26,11 @@ security:
     resource:
       tokenInfoUri: http://localhost:8000/uaa/oauth/check_token
       prefer-token-info: true
-      
+  ignored:
+  - /auth-service/oauth/token
 proxy:
-  auth:
-    routes:
-      payment-service: oauth2, passthru
+    auth:
+      routes:
+        payment-service: oauth2, passthru
+        auth-service: passthru
+      
