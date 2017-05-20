@@ -1,12 +1,15 @@
 package com.future.auth;
 
+import java.security.KeyPair;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.ManagementServerProperties;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,6 +19,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -61,14 +66,13 @@ public class AuthApplication extends WebMvcConfigurerAdapter {
 		@Autowired
 		private AuthenticationManager authenticationManager;
 
-		/*
-		 * @Bean public JwtAccessTokenConverter jwtAccessTokenConverter() {
-		 * JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-		 * KeyPair keyPair = new KeyStoreKeyFactory(new
-		 * ClassPathResource("keystore.jks"),
-		 * "foobar".toCharArray()).getKeyPair("test");
-		 * converter.setKeyPair(keyPair); return converter; }
-		 */
+		@Bean
+		public JwtAccessTokenConverter jwtAccessTokenConverter() {
+			JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+			KeyPair keyPair = new KeyStoreKeyFactory(new FileSystemResource("/Users/Leo.yang/Downloads/oauth2.jks"), "oauth2_st_pass".toCharArray()).getKeyPair("oauth2");
+			converter.setKeyPair(keyPair);
+			return converter;
+		}
 
 		@Override
 		public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -81,18 +85,13 @@ public class AuthApplication extends WebMvcConfigurerAdapter {
 			clients.inMemory().withClient("payment-api-gateway").secret("payment-api-gateway")
 					.authorizedGrantTypes("authorization_code", "refresh_token", "password", "client_credentials")
 					.scopes("openid").autoApprove(true);
-			clients.inMemory().withClient("payment-app").secret("payment-app")
-					.authorizedGrantTypes("password")
+			clients.inMemory().withClient("payment-app").secret("payment-app").authorizedGrantTypes("password")
 					.scopes("openid").autoApprove(true);
 		}
 
 		@Override
 		public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-			endpoints.authenticationManager(
-					authenticationManager)/*
-											 * .accessTokenConverter(
-											 * jwtAccessTokenConverter())
-											 */;
+			endpoints.authenticationManager(authenticationManager).accessTokenConverter(jwtAccessTokenConverter());
 		}
 
 		@Override
