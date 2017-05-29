@@ -1,12 +1,12 @@
 spring:
   application:
     name: payment-ui
-  cloud:
-    config:
-      enabled: true
-      discovery:
-        enabled: true
-        serviceId: payment-ui
+#  cloud:
+#    config:
+#      enabled: true
+#      discovery:
+#        enabled: true
+#        serviceId: payment-ui
 
 eureka:
   instance:

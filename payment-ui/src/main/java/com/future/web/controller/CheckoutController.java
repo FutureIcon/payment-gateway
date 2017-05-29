@@ -26,6 +26,11 @@ public class CheckoutController {
 	@Qualifier("hystrixPaymentServiceClient")
 	private PaymentServiceClient paymentServiceClient;
 
+	@RequestMapping("/test")
+	public String sendMessage() {
+		return "testing" + getOutTradeNo();
+	}
+	
 	@RequestMapping("/dispatch")
 	public MessageAcknowledgement sendMessage(@RequestBody Message message) {
 		return this.paymentServiceClient.sendMessage(message);

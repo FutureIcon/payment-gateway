@@ -1,4 +1,4 @@
-package com.future.web.service;
+package com.future.web.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,12 +10,13 @@ import com.future.web.dto.CheckoutRequest;
 import com.future.web.dto.CheckoutResponse;
 import com.future.web.dto.Message;
 import com.future.web.dto.MessageAcknowledgement;
+import com.future.web.service.PaymentServiceClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service("hystrixPaymentServiceClient")
-public class HystrixWrappedPongClient implements PaymentServiceClient {
+public class HystrixPaymentServiceClient implements PaymentServiceClient {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(HystrixWrappedPongClient.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(HystrixPaymentServiceClient.class);
 
 	@Autowired
 	@Qualifier("ribbonPaymentServiceClient")

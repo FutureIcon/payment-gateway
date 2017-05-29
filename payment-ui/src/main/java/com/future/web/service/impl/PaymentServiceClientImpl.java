@@ -1,4 +1,4 @@
-package com.future.web.ribbon;
+package com.future.web.service.impl;
 
 import java.math.BigDecimal;
 

@@ -17,10 +17,11 @@ security:
     client:
       clientId: payment-ui
       clientSecret: payment-ui
-      accessTokenUri: http://localhost:8000/uaa/oauth/access_token
+      accessTokenUri: http://localhost:8000/uaa/oauth/token
       userAuthorizationUri: http://localhost:8000/uaa/oauth/authorize
       clientAuthenticationScheme: header
     resource:
-      userInfoUri: http://localhost:8000/uaa/user
-      preferTokenInfo: false
+#      userInfoUri: http://localhost:8000/uaa/user
+      token-info-uri: http://localhost:8000/uaa/oauth/check_token
+      preferTokenInfo: true
         

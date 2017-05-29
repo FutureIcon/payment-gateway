@@ -14,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -36,7 +37,7 @@ public class AuthApplication extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/login").setViewName("login");
+		registry.addViewController("/login").setViewName("loginpage");
 		registry.addViewController("/oauth/confirm_access").setViewName("authorize");
 	}
 
@@ -69,23 +70,24 @@ public class AuthApplication extends WebMvcConfigurerAdapter {
 		@Bean
 		public JwtAccessTokenConverter jwtAccessTokenConverter() {
 			JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-			KeyPair keyPair = new KeyStoreKeyFactory(new FileSystemResource("/Users/Leo.yang/Downloads/oauth2.jks"), "oauth2_st_pass".toCharArray()).getKeyPair("oauth2");
+			KeyPair keyPair = new KeyStoreKeyFactory(new FileSystemResource("/Users/Leo.yang/Downloads/oauth2.jks"), "oauth2_st_pass".toCharArray()).getKeyPair("oauth2", "oauth2_pass".toCharArray());
 			converter.setKeyPair(keyPair);
 			return converter;
 		}
 
 		@Override
 		public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-			clients.inMemory().withClient("payment-service").secret("payment-service")
+			InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
+			builder.withClient("payment-service").secret("payment-service")
 					.authorizedGrantTypes("authorization_code", "refresh_token", "password", "client_credentials")
 					.scopes("openid").autoApprove(true);
-			clients.inMemory().withClient("payment-ui").secret("payment-ui")
+			builder.withClient("payment-ui").secret("payment-ui")
+					.authorizedGrantTypes("authorization_code", "refresh_token", "password", "client_credentials")
+					.scopes("openid");
+			builder.withClient("payment-api-gateway").secret("payment-api-gateway")
 					.authorizedGrantTypes("authorization_code", "refresh_token", "password", "client_credentials")
 					.scopes("openid").autoApprove(true);
-			clients.inMemory().withClient("payment-api-gateway").secret("payment-api-gateway")
-					.authorizedGrantTypes("authorization_code", "refresh_token", "password", "client_credentials")
-					.scopes("openid").autoApprove(true);
-			clients.inMemory().withClient("payment-app").secret("payment-app").authorizedGrantTypes("password")
+			builder.withClient("payment-app").secret("payment-app").authorizedGrantTypes("password")
 					.scopes("openid").autoApprove(true);
 		}
 

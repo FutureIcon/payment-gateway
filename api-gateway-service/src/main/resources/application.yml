@@ -13,27 +13,28 @@ zuul:
     auth-service:
       path: /auth-service/**
       stripPrefix: true
-      custom-sensitive-headers: true
+      custom-sensitive-headers: false
       sensitive-headers: Cookie, Set-Cookie
       url: http://localhost:8000/uaa
 
-#security:
-#  oauth2:
-#    client:
-#      clientId: payment-api-gateway
-#      clientSecret: payment-api-gateway
-#      accessTokenUri: http://localhost:8000/uaa/oauth/token
-#      userAuthorizationUri: http://localhost:8000/uaa/oauth/authorize
-#      clientAuthenticationScheme: header
-#    resource:
-#      tokenInfoUri: http://localhost:8000/uaa/oauth/check_token
-#      prefer-token-info: true
-#  ignored:
-#  - /auth-service/oauth/token
-#proxy:
-#    auth:
-#      routes:
-#        payment-service: oauth2, passthru
-#        auth-service: passthru
+security:
+  oauth2:
+    client:
+      clientId: payment-api-gateway
+      clientSecret: payment-api-gateway
+      accessTokenUri: http://localhost:8000/uaa/oauth/token
+      userAuthorizationUri: http://localhost:8000/uaa/oauth/authorize
+      clientAuthenticationScheme: header
+    resource:
+      tokenInfoUri: http://localhost:8000/uaa/oauth/check_token
+      prefer-token-info: true
+  ignored:
+  - /auth-service/oauth/token
+  
+proxy:
+    auth:
+      routes:
+        payment-service: oauth2, passthru
+        auth-service: passthru
           
     
