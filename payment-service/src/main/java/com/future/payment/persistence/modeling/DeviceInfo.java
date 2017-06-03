@@ -1,7 +1,5 @@
 package com.future.payment.persistence.modeling;
 
-import org.springframework.data.cassandra.mapping.UserDefinedType;
-
 //@UserDefinedType("DeviceInfo")
 public class DeviceInfo {
 

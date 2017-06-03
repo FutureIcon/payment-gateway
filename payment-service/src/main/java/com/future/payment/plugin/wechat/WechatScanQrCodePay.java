@@ -3,7 +3,6 @@ package com.future.payment.plugin.wechat;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.datastax.driver.core.utils.UUIDs;
 import com.future.payment.dto.PayTransactionDTO;
 import com.future.payment.enums.PaymentResult;
 import com.future.payment.enums.TradeState;
@@ -74,9 +73,9 @@ public class WechatScanQrCodePay extends AbstractWechatPaymentOperation {
 		data.setPay_channel("微信支付");
 		data.setFee_type("CNY");
 		data.setTrade_state(TradeState.NOTPAY.name());
-		if (data.getRequestId()== null) {
+		/*if (data.getRequestId()== null) {
 			data.setRequestId(UUIDs.timeBased());
-		}
+		}*/
 		//wechatPayReqRepository.save(data);
 		return codeUrl;
 	}

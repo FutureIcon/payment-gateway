@@ -2,13 +2,10 @@ package com.future.payment.persistence.modeling;
 
 import java.util.UUID;
 
-import org.springframework.data.cassandra.mapping.PrimaryKey;
-import org.springframework.data.cassandra.mapping.Table;
-
 //@Table(value = "payment_response_data")
 public class PayResponseData {
 
-	@PrimaryKey
+	/*@PrimaryKey*/
 	private UUID responseId;
 	private String return_code = "";
 	private String return_msg = "";

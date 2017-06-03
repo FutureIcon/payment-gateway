@@ -5,7 +5,6 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.datastax.driver.core.utils.UUIDs;
 import com.future.payment.bo.NotificationBO;
 import com.future.payment.bo.PayBO;
 import com.future.payment.bo.RefundBO;
@@ -24,7 +23,6 @@ import com.future.payment.model.PaymentResponse;
 import com.future.payment.model.RefundRequest;
 import com.future.payment.model.RefundResponse;
 import com.future.payment.persistence.modeling.PayReqData;
-import com.future.payment.persistence.modeling.PaymentRequestKey;
 import com.future.payment.persistence.repository.PaymentRequestRepository;
 import com.future.payment.persistence.repository.WechatPayReqRepository;
 import com.future.payment.plugin.wechat.WechatPay;
@@ -76,9 +74,9 @@ public class PaymentServiceImpl implements PaymentService {
 		wechatPay.execute(dto);
 
 		com.future.payment.persistence.modeling.PaymentRequest test = new com.future.payment.persistence.modeling.PaymentRequest();
-		if (test.getRequestKey() == null) {
+		/*if (test.getRequestKey() == null) {
 			test.setRequestKey(new PaymentRequestKey(UUIDs.timeBased()));
-		}
+		}*/
 		//paymentRequestRepository.save(test);
 
 		return new PaymentResponse(PaymentResult.NORMAL);
@@ -124,9 +122,9 @@ public class PaymentServiceImpl implements PaymentService {
 		wechatRefund.execute(dto);
 
 		com.future.payment.persistence.modeling.PaymentRequest test = new com.future.payment.persistence.modeling.PaymentRequest();
-		if (test.getRequestKey() == null) {
+		/*if (test.getRequestKey() == null) {
 			test.setRequestKey(new PaymentRequestKey(UUIDs.timeBased()));
-		}
+		}*/
 		//paymentRequestRepository.save(test);
 
 		return new RefundResponse(PaymentResult.NORMAL);
