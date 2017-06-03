@@ -2,13 +2,10 @@ package com.future.payment.persistence.modeling;
 
 import java.util.UUID;
 
-import org.springframework.data.cassandra.mapping.PrimaryKey;
-import org.springframework.data.cassandra.mapping.Table;
-
 //@Table(value = "payment_request_data")
 public class PayReqData {
 
-	@PrimaryKey
+	/*@PrimaryKey*/
 	private UUID requestId;
 	private String sign_type;
 	private String detail;

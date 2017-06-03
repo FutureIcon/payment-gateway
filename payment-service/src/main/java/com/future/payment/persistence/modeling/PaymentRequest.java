@@ -1,12 +1,9 @@
 package com.future.payment.persistence.modeling;
 
-import org.springframework.data.cassandra.mapping.PrimaryKey;
-import org.springframework.data.cassandra.mapping.Table;
-
 //@Table(value = "payment_request")
 public class PaymentRequest {
 
-	@PrimaryKey
+	/*@PrimaryKey*/
 	private PaymentRequestKey requestKey;
 	
 	private DeviceInfo deviceInfo;

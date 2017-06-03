@@ -2,8 +2,6 @@ package com.future.payment.persistence.modeling;
 
 import java.math.BigDecimal;
 
-import org.springframework.data.cassandra.mapping.UserDefinedType;
-
 //@UserDefinedType("OrderItem")
 public class OrderItem {
 

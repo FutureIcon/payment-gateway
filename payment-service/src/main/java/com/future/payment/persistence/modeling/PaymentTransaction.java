@@ -4,16 +4,13 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import org.joda.time.DateTime;
-import org.springframework.cassandra.core.PrimaryKeyType;
-import org.springframework.data.cassandra.mapping.PrimaryKeyColumn;
-import org.springframework.data.cassandra.mapping.Table;
 
 
 //@Table(value = "payment_transaction")
 public class PaymentTransaction {
-	@PrimaryKeyColumn(name = "attemptId", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
+	/*@PrimaryKeyColumn(name = "attemptId", ordinal = 0, type = PrimaryKeyType.PARTITIONED)*/
 	private UUID attemptId;
-	@PrimaryKeyColumn(name = "paymentId", ordinal = 1, type = PrimaryKeyType.PARTITIONED)
+	/*@PrimaryKeyColumn(name = "paymentId", ordinal = 1, type = PrimaryKeyType.PARTITIONED)*/
 	private UUID paymentId;
 	private String transactionExternalKey;
 

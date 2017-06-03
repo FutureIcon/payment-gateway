@@ -1,9 +1,5 @@
 package com.future.payment.persistence.modeling;
 
-import java.util.UUID;
-
-import org.springframework.data.cassandra.mapping.UserDefinedType;
-
 //@UserDefinedType("PaymentMethod")
 public class PaymentMethod {
 
